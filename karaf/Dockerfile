@@ -33,7 +33,7 @@ ARG AET_VERSION="3.3.0"
 ARG AET_ARTIFACT="features.zip"
 ARG AET_ARTIFACT_DOWNLOAD_URL="https://github.com/Cognifide/aet/releases/download/${AET_VERSION}/${AET_ARTIFACT}"
 
-RUN apk add --update bash tar jq curl && rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash tar jq curl
 
 RUN curl -fSL -o /tmp/apache-karaf.tar.gz ${KARAF_DOWNLOAD_URL} \
     && echo "${KARAF_DOWNLOAD_SHA512}  /tmp/apache-karaf.tar.gz" | sha512sum -c - \
@@ -72,7 +72,7 @@ ARG AET_ARTIFACT_DOWNLOAD_URL="https://github.com/Cognifide/aet/releases/downloa
 RUN addgroup -S -g ${KARAF_UID} ${KARAF_USER}; \
     adduser -S -u ${KARAF_UID} -g ${KARAF_USER} ${KARAF_USER}
 
-RUN apk add --update bash jq curl tar && rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash jq curl tar
 
 COPY --from=build /opt/karaf /opt/karaf
 

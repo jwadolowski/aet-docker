@@ -38,7 +38,7 @@ RUN apk add --no-cache bash tar jq curl
 RUN curl -fSL -o /tmp/apache-karaf.tar.gz ${KARAF_DOWNLOAD_URL} \
     && echo "${KARAF_DOWNLOAD_SHA512}  /tmp/apache-karaf.tar.gz" | sha512sum -c - \
     && mkdir -p /opt/karaf \
-    && tar --strip-components=1 -C /opt/karaf -xzf /tmp/apache-karaf.tar.gz \
+    && tar --strip-components=1 -C /opt/karaf xzf /tmp/apache-karaf.tar.gz \
     && rm /tmp/apache-karaf.tar.gz \
     && mkdir -p /opt/karaf/data /opt/karaf/data/log \
     && echo org.ops4j.pax.url.mvn.defaultRepositories = file:///opt/maven/repository@id=local.app@snapshots  >> /opt/karaf/etc/org.ops4j.pax.url.mvn.cfg \
@@ -94,9 +94,7 @@ RUN mv /opt/karaf/deploy/aet-*.xml /aet/core/features \
   && chown -R ${KARAF_USER}.${KARAF_USER} /aet/core/features \
   && chown -R ${KARAF_USER}.${KARAF_USER} /aet/extra/features
 
-RUN chown -R ${KARAF_USER}.${KARAF_USER} /opt/karaf \
-    && echo org.ops4j.pax.url.mvn.defaultRepositories = file:///opt/maven/repository@id=local.app@snapshots  >> /opt/karaf/etc/org.ops4j.pax.url.mvn.cfg \
-    && sed -i "s+http://+https://+g" /opt/karaf/etc/org.ops4j.pax.url.mvn.cfg
+RUN chown -R ${KARAF_USER}.${KARAF_USER} /opt/karaf
 
 EXPOSE 1099 8101 8181 44444
 

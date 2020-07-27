@@ -20,12 +20,12 @@
 
 AET_DOCKER_VERSION="$1"
 
-docker tag skejven/aet_activemq:${AET_DOCKER_VERSION} skejven/aet_activemq:${AET_DOCKER_VERSION}
-docker tag skejven/aet_browsermob:${AET_DOCKER_VERSION} skejven/aet_browsermob:${AET_DOCKER_VERSION}
-docker tag skejven/aet_karaf:${AET_DOCKER_VERSION} skejven/aet_karaf:${AET_DOCKER_VERSION}
-docker tag skejven/aet_report:${AET_DOCKER_VERSION} skejven/aet_report:${AET_DOCKER_VERSION}
+docker tag "skejven/aet_activemq:${AET_DOCKER_VERSION}" "skejven/aet_activemq:${AET_DOCKER_VERSION}"
+docker tag "skejven/aet_browsermob:${AET_DOCKER_VERSION}" "skejven/aet_browsermob:${AET_DOCKER_VERSION}"
+docker tag "skejven/aet_karaf:${AET_DOCKER_VERSION}" "skejven/aet_karaf:${AET_DOCKER_VERSION}"
+docker tag "skejven/aet_report:${AET_DOCKER_VERSION}" "skejven/aet_report:${AET_DOCKER_VERSION}"
 
-docker push skejven/aet_activemq:${AET_DOCKER_VERSION}
-docker push skejven/aet_browsermob:${AET_DOCKER_VERSION}
-docker push skejven/aet_karaf:${AET_DOCKER_VERSION}
-docker push skejven/aet_report:${AET_DOCKER_VERSION}
+docker push "skejven/aet_activemq:${AET_DOCKER_VERSION}"
+docker push "skejven/aet_browsermob:${AET_DOCKER_VERSION}"
+docker push "skejven/aet_karaf:${AET_DOCKER_VERSION}"
+docker push "skejven/aet_report:${AET_DOCKER_VERSION}"
